@@ -1,7 +1,7 @@
 import React ,{useState} from 'react'
 import PropTypes from 'prop-types'
 export default function TextForm(props) {
-    const [text,setText] = useState("Enter the text here");
+    const [text,setText] = useState("");
     const handleUpperCase = () =>{
         //console.log("handle upper case button was clicked");
         let value = text.toUpperCase();
@@ -12,16 +12,31 @@ export default function TextForm(props) {
         //console.log("text is changed");
         setText(event.target.value);//we are setting the new value of text everytime we are making a change in input box
     }
+
+    const handleLowerCase = ()=> {
+        let value = text.toLowerCase();
+        setText(value);
+    }
   return (
-    <div>
+    <>
+    <div className='container'>
         <div className="mb-3">
             <h1>{props.heading}</h1>
             {/* <label htmlFor="myBox" className="form-label">Example textarea</label> */}
             {/* here on change is imp to update the state of text variable */}
             <textarea className="form-control" id="myBox1" value={text} onChange={handleTextBox} rows="8"></textarea> 
         </div>
-        <button className="btn btn-primary" onClick={handleUpperCase}>Convert to Upper case</button>
+        <button className="btn btn-primary mx-2" onClick={handleUpperCase}>Convert to Upper case</button>
+        <button className="btn btn-primary mx-2" onClick={handleLowerCase}>Convert to Lower case</button>
     </div>
+    <div className="container my-3">
+        <h2>Your text summary</h2>
+        <p>Your text has {text.split(" ").length} words and {text.length} characters</p>
+        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        <h2>Preview</h2>
+        <p>{text}</p>
+    </div>
+    </>
   )
 }
 
