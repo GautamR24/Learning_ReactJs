@@ -11,7 +11,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-//test
+//testing
 function App() {
   const [mode,setMode] = useState('light');
   const [alert,setAlert] = useState(null);
