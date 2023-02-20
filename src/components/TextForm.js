@@ -6,6 +6,7 @@ export default function TextForm(props) {
         //console.log("handle upper case button was clicked");
         let value = text.toUpperCase();
         setText(value);
+        props.showAlert("converted to upper case!","success");
     }
 
     const handleTextBox = (event)=>{//evert variable is by default given by the onChange
@@ -16,17 +17,21 @@ export default function TextForm(props) {
     const handleLowerCase = ()=> {
         let value = text.toLowerCase();
         setText(value);
+        props.showAlert("converted to lower case!","success");
     }
 
     const handleClearText = ()=>{
         let value = '';
         setText(value);
+        props.showAlert("Your text is cleared now","success");
     }
 
     const handleCopy = ()=>{
         let text = document.getElementById('myBox1');
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert("You have copied text","success");
+        
     }
   return (
     <>
